@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resultado - Emoção Marinha</title>
+  <style>
+    :root{
+      --bg:#e6f7fb;
+      --card:#ffffff;
+      --muted:#6b7c86;
+      --accent:#0077b6;
+      --accent-2:#00a6d6;
+      --dark-bg:#02121a;
+      --dark-card:#05232b;
+      --text:#05232b;
+      --radius:14px;
+      --glass: rgba(255,255,255,0.65);
+      --transition: 300ms cubic-bezier(.2,.8,.2,1);
+    }
+    :root.dark{
+      --bg:#031016;
+      --card:#05232b;
+      --muted:#9fb7c3;
+      --accent:#2dd4bf;
+      --accent-2:#06b6d4;
+      --text:#e6f7fb;
+      --glass:rgba(3,18,22,0.6);
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:"Segoe UI",Roboto,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--bg),#dff6ff);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      text-align:center;
+    }
+    header .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:1rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .brand .logo{
+      width:48px;
+      height:48px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:20px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.1);
+    }
+    .resultado-main{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:2rem;
+      gap:1.5rem;
+    }
+    .resultado-hero h1{
+      font-size:2rem;
+      margin-bottom:0.5rem;
+    }
+    .resultado-hero h2{
+      font-size:1.6rem;
+      color:var(--accent);
+      margin:0;
+    }
+    .resultado-hero p{
+      margin:0.5rem 0 1rem 0;
+      color:var(--muted);
+    }
+    .resultado-card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:1.5rem;
+      box-shadow:0 10px 28px rgba(2,28,38,0.08);
+      max-width:420px;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:1rem;
+    }
+    .resultado-card img{
+      width:100%;
+      max-width:350px;
+      border-radius:12px;
+      object-fit:cover;
+      box-shadow:0 8px 22px rgba(2,28,38,0.06);
+    }
+    .btn{
+      appearance:none;
+      border:0;
+      padding:10px 16px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:600;
+      transition:transform var(--transition), box-shadow var(--transition);
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;
+      box-shadow:0 8px 20px rgba(0,120,160,0.12);
+    }
+    .btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 24px rgba(0,120,160,0.16);
+    }
+    footer{
+      margin-top:2rem;
+      color:var(--muted);
+      font-size:0.9rem;
+    }
+    @media(max-width:600px){
+      .resultado-card img{max-width:90%;}
+    }
+  </style>
+</head>
+<body class="resultado">
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">🌊</div>
+        <span>Fundo do Mar</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="resultado-main">
+    <section class="resultado-hero">
+      <h1>Emoção Detectada</h1>
+      <h2 id="emocaoTitle">Processando...</h2>
+      <p id="confTitle"></p>
+    </section>
+
+    <section class="resultado-card">
+      <img id="imagemEmocao" alt="Imagem relacionada à emoção" />
+      <button class="btn" onclick="voltar()">Voltar</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="anoAtual"></span> Fundo do Mar</p>
+  </footer>
+
+  <script>
+    const imagensPorEmocao = {
+       feliz: [
+        'static/mar_feliz/1.png',
+        'static/mar_feliz/2.png',
+        'static/mar_feliz/3.png',
+        'static/mar_feliz/4.png',
+        'static/mar_feliz/5.png',
+        'static/mar_feliz/6.png',
+        'static/mar_feliz/7.png',
+        'static/mar_feliz/8.png',
+        'static/mar_feliz/9.png',
+        'static/mar_feliz/10.png',
+        'static/mar_feliz/11.png',
+        'static/mar_feliz/12.png',
+        'static/mar_feliz/13.png',
+        'static/mar_feliz/14.png',
+        'static/mar_feliz/15.png',
+        'static/mar_feliz/16.png',
+        'static/mar_feliz/17.png',
+        'static/mar_feliz/18.png',
+        'static/mar_feliz/19.png',
+        'static/mar_feliz/20.png'
+   ],
+      triste: [
+        'static/mar_triste/1.png',
+        'static/mar_triste/2.png',
+        'static/mar_triste/3.png',
+        'static/mar_triste/4.png',
+        'static/mar_triste/5.png',
+        'static/mar_triste/6.png',
+        'static/mar_triste/7.png',
+        'static/mar_triste/8.png',
+        'static/mar_triste/9.png',
+        'static/mar_triste/10.png',
+        'static/mar_triste/11.png',
+        'static/mar_triste/12.png',
+        'static/mar_triste/13.png',
+        'static/mar_triste/14.png',
+        'static/mar_triste/15.png',
+        'static/mar_triste/16.png',
+        'static/mar_triste/17.png',
+        'static/mar_triste/18.png',
+        'static/mar_triste/19.png',
+        'static/mar_triste/20.png'
+    
+      ],
+      neutro: [
+        'static/mar_neutro/1.png',
+        'static/mar_neutro/2.png',
+        'static/mar_neutro/3.png',
+        'static/mar_neutro/4.png',
+        'static/mar_neutro/5.png',
+        'static/mar_neutro/6.png',
+        'static/mar_neutro/7.png',
+        'static/mar_neutro/8.png',
+        'static/mar_neutro/9.png',
+        'static/mar_neutro/10.png',
+        'static/mar_neutro/11.png',
+        'static/mar_neutro/12.png',
+        'static/mar_neutro/13.png',
+        'static/mar_neutro/14.png',
+        'static/mar_neutro/15.png',
+        'static/mar_neutro/16.png',
+        'static/mar_neutro/17.png',
+        'static/mar_neutro/18.png',
+        'static/mar_neutro/19.png',
+        'static/mar_neutro/20.png'
+      ]
+    };
+
+    const traducoes = {
+      happy:'feliz',
+      sad:'triste',
+      neutral:'neutro',
+      angry:'triste',
+      fearful:'triste',
+      disgusted:'triste',
+      surprised:'feliz'
+    };
+
+    function getQueryParam(name){
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function imagemAleatoria(lista){
+      return lista[Math.floor(Math.random()*lista.length)];
+    }
+
+    const emocaoOriginal = getQueryParam('emocao') || 'neutral';
+    const conf = getQueryParam('conf') || '0';
+    const emocaoTraduzida = traducoes[emocaoOriginal] || 'nenhuma';
+
+    document.getElementById('emocaoTitle').innerText = emocaoTraduzida.charAt(0).toUpperCase()+emocaoTraduzida.slice(1);
+    document.getElementById('confTitle').innerText = `Confiança: ${conf}%`;
+
+    if(imagensPorEmocao[emocaoTraduzida] && imagensPorEmocao[emocaoTraduzida].length>0){
+      document.getElementById('imagemEmocao').src = imagemAleatoria(imagensPorEmocao[emocaoTraduzida]);
+    }else{
+      document.getElementById('imagemEmocao').style.display = 'none';
+    }
+
+    function voltar(){
+      window.location.href = 'index.html';
+    }
+
+    document.getElementById('anoAtual').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

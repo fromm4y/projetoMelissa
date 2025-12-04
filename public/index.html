@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Este site aborda o impacto da poluição nos oceanos, destacando causas, consequências e soluções para preservar a vida marinha." />
+  <title>Poluição Marinha — A saúde dos mares é a saúde do planeta</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.8.0/dist/tf.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+
+</head>
+<body>
+  <header role="banner">
+    <div class="container" style="max-width:1200px;margin:0 auto;">
+      <div class="brand" aria-hidden="false">
+        <div class="logo" aria-hidden="true">FM</div>
+        <div>
+          <div style="font-size:0.95rem;">Projeto</div>
+          <div style="font-size:0.9rem;color:var(--muted);">Fundo do Mar — Poluição Marinha</div>
+        </div>
+      </div>
+
+      <nav role="navigation" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#curiosidades">Curiosidades</a></li>
+          <li><a href="#fatos">Fatos</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="controls" role="toolbar" aria-label="Controles">
+        <button class="toggle" id="themeToggle" aria-pressed="false" title="Alternar modo claro/escuro">Modo</button>
+        <!-- TODO: alterar para botões sociais se necessário -->
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Poluição Marinha</h1>
+        <p style="margin:0;font-weight:600;color:var(--accent-2);">A saúde dos mares é a saúde do planeta</p>
+        <p class="lead">
+          Este site aborda o impacto da poluição nos oceanos, destacando as causas, consequências e soluções para preservar a vida marinha. Nosso objetivo é conscientizar e inspirar ações para combater a degradação dos mares.
+        </p>
+
+        <div class="actions" role="group" aria-label="Ações principais">
+          <button id="abrirIA" class="btn" aria-label="Iniciar reconhecimento facial">Reconhecimento Facial</button>
+          <button id="btnAbrirChatbot" class="btn ghost" aria-label="Abrir chatbot">Abrir Chatbot</button>
+        </div>
+
+        <p class="small" style="margin-top:0.6rem;">Equipe: jhonny, melissa, pedro, mirela</p>
+      </div>
+
+      <figure class="hero-figure" aria-hidden="false">
+        <!-- TODO: substitua a imagem por um caminho local se preferir -->
+        <img src="https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/assets/2018/06/07-06-2018-Saeed-Rashid-turtle-plastic.jpg/image1170x530cropped.jpg"
+             alt="Tartaruga marinha nadando entre lixo plástico - exemplo do impacto da poluição marinha" />
+      </figure>
+    </section>
+
+    <!-- Curiosidades -->
+    <section id="curiosidades" aria-labelledby="curiosidades-title">
+      <h2 id="curiosidades-title">Curiosidades</h2>
+      <div id="curiosidades" role="list">
+        <article class="curio" role="listitem" tabindex="0">
+          <div class="icon" aria-hidden="true">1</div>
+          <p><strong>8 milhões de toneladas</strong> de plástico entram nos oceanos todo ano.</p>
+        </article>
+
+        <article class="curio" role="listitem" tabindex="0">
+          <div class="icon" aria-hidden="true">2</div>
+          <p>Mais de <strong>100 mil animais</strong> marinhos morrem anualmente por ingestão de plástico.</p>
+        </article>
+
+        <article class="curio" role="listitem" tabindex="0">
+          <div class="icon" aria-hidden="true">3</div>
+          <p><strong>90%</strong> das aves marinhas já ingeriram plástico em algum momento.</p>
+        </article>
+
+        <article class="curio" role="listitem" tabindex="0">
+          <div class="icon" aria-hidden="true">4</div>
+          <p>Existe uma “<strong>ilha de lixo</strong>” no Pacífico duas vezes maior que a França.</p>
+        </article>
+
+        <article class="curio" role="listitem" tabindex="0">
+          <div class="icon" aria-hidden="true">5</div>
+          <p>Microplástico já foi encontrado em peixes, sal e até na água potável.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Fatos / Ciência -->
+    <section id="fatos" aria-labelledby="fatos-title">
+      <h2 id="fatos-title">Fatos & Ciência</h2>
+      <div class="fatos-grid" role="list">
+        <article class="card" role="listitem" tabindex="0">
+          <h3>A origem terrestre do problema</h3>
+          <p>Cerca de <strong>80%</strong> da poluição marinha tem origem em atividades humanas em terra — resíduos urbanos, escoamento agrícola e descargas industriais.</p>
+        </article>
+
+        <article class="card" role="listitem" tabindex="0">
+          <h3>Decomposição lenta dos plásticos</h3>
+          <p>Plásticos comuns podem levar até <strong>400 anos</strong> para se decompor no oceano, fragmentando-se em microplásticos que persistem por gerações.</p>
+        </article>
+
+        <article class="card" role="listitem" tabindex="0">
+          <h3>Impacto na cadeia alimentar</h3>
+          <p>Microplásticos são ingeridos por organismos pequenos e bioacumulam-se na cadeia alimentar, chegando eventualmente aos seres humanos.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" aria-labelledby="galeria-title">
+      <h2 id="galeria-title">Galeria</h2>
+      <div class="gallery" role="list">
+        <figure role="listitem">
+          <img src="https://images.squarespace-cdn.com/content/v1/5b373914c258b457bb274883/1580642317975-VO8V2EUWBZNW1NDV362L/EA+Poluicao1000x800+3.png?format=1500w" alt="Plásticos acumulados na costa" />
+          <figcaption>Resíduos plásticos na costa</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img src="https://cdn.slidesharecdn.com/ss_thumbnails/poluiomarinha-230503221739-7ad93425-thumbnail.jpg?width=640&height=640&fit=bounds" alt="Infográfico sobre poluição marinha" />
+          <figcaption>Infográfico de poluição marinha</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img src="https://guiadacervejabr.com/wp-content/uploads/2022/03/ocean-gedf859d92_1920-e1646950131433.jpg" alt="Mar degradado e poluído" />
+          <figcaption>Mar impactado por poluição</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img src="https://st4.depositphotos.com/32281100/39493/i/450/depositphotos_394938814-stock-photo-plastic-ocean-pollution-whale-shark.jpg" alt="Grande quantidade de lixo no oceano" />
+          <figcaption>Grande concentração de lixo marinho</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img src="https://welectric.pt/wp-content/uploads/2020/06/coppoi.jpg" alt="Impacto do óleo e químicos na água do mar" />
+          <figcaption>Poluição por óleo e químicos</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjVrHZ-ZgMEHIyNATN7UH4PyKTUZtb61bBo2aGxM4eJbbdqSewcF4lhcEUX61ra34VVeMQkXaje0Dz-keDS2KXpellJmwUgIjJuoLU1-jkCyBJ4O-vdKKQCZJYtXa4iLwFXKE1xDXqG2REy/s480/charge_poluicao_lixo_no_mar_5.jpg" alt="Praia coberta por lixo" />
+          <figcaption>Praia coberta por lixo</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Perguntas Frequentes</h2>
+      <div class="faq">
+        <details>
+          <summary>O que é poluição marinha?</summary>
+          <p>É a contaminação dos oceanos por lixo, produtos químicos e outros resíduos humanos.</p>
+        </details>
+
+        <details>
+          <summary>Qual é a principal causa da poluição marinha?</summary>
+          <p>O descarte incorreto de lixo, especialmente plásticos, e o escoamento de substâncias químicas do continente.</p>
+        </details>
+
+        <details>
+          <summary>Como o plástico afeta os animais marinhos?</summary>
+          <p>Animais podem engolir ou se enredar em plásticos, levando a ferimentos, doenças e morte.</p>
+        </details>
+
+        <details>
+          <summary>A poluição marinha afeta os seres humanos?</summary>
+          <p>Sim — peixes contaminados e microplásticos na cadeia alimentar podem causar problemas de saúde.</p>
+        </details>
+
+        <details>
+          <summary>O que podemos fazer para reduzir a poluição marinha?</summary>
+          <p>Evitar descartáveis, reciclar corretamente, apoiar limpezas de praias e políticas públicas ambientais.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" aria-label="Call to action">
+      <div>
+        <strong>Quer aprender mais?</strong>
+        <div class="small" style="margin-top:0.3rem;">Explore materiais educativos e participe de ações locais para proteger os oceanos.</div>
+      </div>
+      <div style="display:flex;gap:0.5rem;align-items:center;">
+        <a href="#fatos" class="btn ghost">Aprenda mais</a>
+        <a href="#galeria" class="btn">Ver galeria</a>
+      </div>
+    </section>
+
+    <!-- Créditos / Fontes -->
+    <section aria-labelledby="fontes-title">
+      <h2 id="fontes-title">Créditos & Fontes</h2>
+      <p class="small">
+        Fontes e referências: United Nations media, relatórios ambientais, imagens públicas (links fornecidos pela equipe).<br/>
+        Imagens (exemplos): United Nations, Unsplash / Pexels / Shutterstock (uso ilustrativo).<br/>
+        <!-- TODO: substituir por links diretos e formatados antes da entrega final -->
+      </p>
+    </section>
+  </main>
+
+  <!-- Chatbot Aside (inicialmente oculto) -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Oceandro"
+      agent-id="7e9ea28d-fc2a-4f18-a435-1d31267d9a34"
+      language-code="pt-br">
+    </df-messenger>
+
+<!-- MODAL DE RECONHECIMENTO FACIAL -->
+<div id="cameraModal" class="modal-camera" aria-hidden="true">
+  <div class="modal-camera-content">
+
+
+    <button id="fecharModal" class="modal-camera-close" title="Fechar">❌</button>
+
+
+    <h2 class="modal-camera-title">Reconhecimento Facial</h2>
+
+
+    <div class="modal-video-wrap">
+      <video id="video" autoplay muted playsinline></video>
+    </div>
+
+
+    <div class="modal-camera-controls">
+      <button id="tirarFoto" class="modal-camera-btn" title="Tirar foto">📸 Tirar Foto</button>
+    </div>
+
+
+    <p id="modalStatus" class="modal-camera-status">Aguardando...</p>
+
+
+    <canvas id="fotoCanvas" style="display:none;"></canvas>
+
+
+  </div>
+</div>
+
+  <footer role="contentinfo">
+    <div class="small">
+      <a href="#top" id="backToTop" style="display:block;margin-bottom:6px;">Voltar ao topo</a>
+      <div id="rodapeAno">© <span id="anoAtual"></span> Projeto Fundo do Mar</div>
+    </div>
+  </footer>
+<script src="script.js" defer></script>
+  <!-- SCRIPT (arquivo separado: script.js) -->
+</body>
+</html>
